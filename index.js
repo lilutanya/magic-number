@@ -4,8 +4,9 @@
 
 var restify = require('restify');
 var server = restify.createServer();
-var magic = require('mathlib').magic;
-var isInteger = require('mathlib').isInteger;
+var magic = require('./mathlib').magic;
+var isInteger = require('./mathlib').isInteger;
+var msb = require('msb');
 
 server.use(restify.queryParser());
 
@@ -19,8 +20,22 @@ server.get('/magicnumber', function (req, res, next) {
     return next(err);  
   }
 
-  var s = magic(x, y);
-  res.send(200, s);
+  var payload = {
+    query: {
+        x: x,
+        y: y
+    }
+  };
+
+  msb.request('magic:sqrt:v1', payload, function(err, payload,  _fullMesssage) {
+
+    if (err) return console.error(err);
+    if (!payload) return console.error('response timed out');
+
+    res.send(200, payload.body.number);
+
+  });
+
   return next();
 });
 
