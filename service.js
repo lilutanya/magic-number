@@ -7,8 +7,6 @@ Responder.createServer({
   namespace: "magic:sqrt:v1"
 })
 .use(function(request, response, next) {
-  console.log("request");
-  console.log(request);
 
   if (!request.query || !request.query.x  || !request.query.y) {
     response.writeHead(400);
