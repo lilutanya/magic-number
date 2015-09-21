@@ -10,7 +10,7 @@
   "author": "Lilo",
   "license": "MIT",
   "dependencies": {
-    "msb": "~0.8.2",
+    "async": "^1.4.2",
     "request": "^2.62.0",
     "restify": "~4.0.0"
   },
