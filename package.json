@@ -2,7 +2,7 @@
   "name": "magic-number",
   "version": "1.0.0",
   "private": true,
-  "description": "Transforms a magic number.",
+  "description": "Transforms a magic number",
   "main": "index.js",
   "scripts": {
     "test": "tap -c test.js"
